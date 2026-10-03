@@ -22,3 +22,25 @@ body {
 		font-size:0.8em;
 	}
 }
+
+/* Numbered lists: a fixed marker column wide enough for two digits, with
+   right-aligned tabular numbers, so the text starts at the same place from
+   1. to 99. Live Preview sizes the hanging indent from the marker's character
+   count with an inline style, hence the !important on top-level lines. */
+body {
+	--list-number-width: calc(2ch + 0.6em);
+}
+.markdown-rendered ol > li::marker {
+	font-variant-numeric: tabular-nums;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-1:not(.HyperMD-quote, .HyperMD-task-line):has(.cm-formatting-list-ol) {
+	--list-number-column: calc(var(--list-padding-inline-start) + var(--list-number-width));
+	padding-inline-start: var(--list-number-column) !important;
+	text-indent: calc(-1 * var(--list-number-column)) !important;
+	.cm-formatting-list-ol {
+		display: inline-block;
+		box-sizing: border-box;
+		min-width: var(--list-number-column);
+		text-align: end;
+	}
+}
