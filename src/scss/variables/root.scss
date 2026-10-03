@@ -15,6 +15,9 @@ body {
 	/* Embeds */
 	--embed-block-shadow-hover: none;
 
+	/* Scrollbars */
+	--scrollbar-native-width: none;
+
 	/* Font sizes */
 	--font-ui-smaller: 11px;
 
@@ -24,12 +27,13 @@ body {
 	/* Headings */
 	--inline-title-margin-bottom: 1rem;
 
-	--h1-size: 1.125em;
-	--h2-size: 1.05em;
-	--h3-size: 1em;
-	--h4-size: 0.90em;
-	--h5-size: 0.85em;
-	--h6-size: 0.85em;
+	/* Modular scale (ratio 1.125), with h5 at body size */
+	--h1-size: 1.6em;
+	--h2-size: 1.42em;
+	--h3-size: 1.27em;
+	--h4-size: 1.125em;
+	--h5-size: 1em;
+	--h6-size: 0.89em;
 
 	--h1-weight: 600;
 	--h2-weight: 600;
@@ -53,7 +57,7 @@ body {
 	--h6-style: normal;
 
 	/* Line widths */
-	--line-width: 40rem;
+	--line-width: 62rem;
 	--line-height: 1.5;
 	--line-height-normal: var(--line-height);
 	--max-width: 88%;

@@ -605,7 +605,7 @@ settings:
 		title: H1 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1.125em
+		default: 1.6em
 	-
 		id: h1-weight
 		title: H1 font weight
@@ -673,7 +673,7 @@ settings:
 		title: H2 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1em
+		default: 1.42em
 	-
 		id: h2-weight
 		title: H2 font weight
@@ -741,7 +741,7 @@ settings:
 		title: H3 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1em
+		default: 1.27em
 	-
 		id: h3-weight
 		title: H3 font weight
@@ -809,7 +809,7 @@ settings:
 		title: H4 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 0.9em
+		default: 1.125em
 	-
 		id: h4-weight
 		title: H4 font weight
@@ -877,7 +877,7 @@ settings:
 		title: H5 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 0.85em
+		default: 1em
 	-
 		id: h5-weight
 		title: H5 font weight
@@ -945,7 +945,7 @@ settings:
 		title: H6 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 0.85em
+		default: 0.89em
 	-
 		id: h6-weight
 		title: H6 font weight
@@ -1956,7 +1956,7 @@ settings:
 		title: Inline title font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1.125em
+		default: 1.6em
 	-
 		id: inline-title-weight
 		title: Inline title font weight

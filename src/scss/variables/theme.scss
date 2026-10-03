@@ -143,6 +143,9 @@
 }
 
 .theme-dark {
+	--divider-color:              #292929;
+	--tab-outline-color:          #292929;
+
 	--interactive-normal:         var(--bg3);
 	--interactive-accent-rgb: 66, 66, 66;
 

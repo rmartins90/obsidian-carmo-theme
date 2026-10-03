@@ -1,7 +1,16 @@
 /* File browser */
 
 
-.hider-file-nav-header:not(.labeled-nav) {
+.mod-left-split .workspace-tab-header[data-type="file-explorer"],
+.workspace-leaf-content[data-type="file-explorer"] .nav-header {
+	display: none;
+}
+
+.mod-left-split .workspace-tab-header-container {
+	border-bottom-color: transparent;
+}
+
+body:not(.labeled-nav) {
 	.nav-files-container {
 		padding-top: var(--size-4-3);
 	}

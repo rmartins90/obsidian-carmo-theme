@@ -160,19 +160,9 @@ body .excalidraw {
 	--accent-l:60%;
 	--base-l:15%;
 
-	--bg1:
-	hsl(
-		var(--base-h),
-		var(--base-s),
-		var(--base-l)
-		);
-
-	--bg2:
-	hsl(
-		var(--base-h),
-		var(--base-s),
-		calc(var(--base-l) - 2%)
-		);
+	/* Note pane and side panels */
+	--bg1: #151515;
+	--bg2: #111111;
 
 	--bg3:
 	hsla(

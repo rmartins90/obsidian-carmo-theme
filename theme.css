@@ -19,18 +19,21 @@ body {
   --blockquote-border-color: var(--quote-opening-modifier);
   /* Embeds */
   --embed-block-shadow-hover: none;
+  /* Scrollbars */
+  --scrollbar-native-width: none;
   /* Font sizes */
   --font-ui-smaller: 11px;
   /* Font weights */
   --normal-weight: 400;
   /* Headings */
   --inline-title-margin-bottom: 1rem;
-  --h1-size: 1.125em;
-  --h2-size: 1.05em;
-  --h3-size: 1em;
-  --h4-size: 0.90em;
-  --h5-size: 0.85em;
-  --h6-size: 0.85em;
+  /* Modular scale (ratio 1.125), with h5 at body size */
+  --h1-size: 1.6em;
+  --h2-size: 1.42em;
+  --h3-size: 1.27em;
+  --h4-size: 1.125em;
+  --h5-size: 1em;
+  --h6-size: 0.89em;
   --h1-weight: 600;
   --h2-weight: 600;
   --h3-weight: 500;
@@ -50,7 +53,7 @@ body {
   --h5-style: normal;
   --h6-style: normal;
   /* Line widths */
-  --line-width: 40rem;
+  --line-width: 62rem;
   --line-height: 1.5;
   --line-height-normal: var(--line-height);
   --max-width: 88%;
@@ -249,18 +252,9 @@ body .excalidraw {
 .excalidraw.theme--dark {
   --accent-l:60%;
   --base-l:15%;
-  --bg1:
-  hsl(
-  	var(--base-h),
-  	var(--base-s),
-  	var(--base-l)
-  	);
-  --bg2:
-  hsl(
-  	var(--base-h),
-  	var(--base-s),
-  	calc(var(--base-l) - 2%)
-  	);
+  /* Note pane and side panels */
+  --bg1: #151515;
+  --bg2: #111111;
   --bg3:
   hsla(
   	var(--base-h),
@@ -509,6 +503,8 @@ body .excalidraw {
 }
 
 .theme-dark {
+  --divider-color: #292929;
+  --tab-outline-color: #292929;
   --interactive-normal: var(--bg3);
   --interactive-accent-rgb: 66, 66, 66;
   --active-line-bg: rgba(255,255,255,0.04);
@@ -1018,27 +1014,41 @@ body:not(.minimal-focus-mode) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .
   transition: opacity 0.25s ease-in-out;
 }
 
+/* Show the header title once the inline title scrolls out of view.
+   A view timeline on the inline title toggles --header-title-hidden,
+   and a style query transitions the header title in and out. */
+.workspace-leaf-content {
+  timeline-scope: --inline-title-timeline;
+}
+
+.inline-title:not(.markdown-embed *) {
+  view-timeline: --inline-title-timeline block;
+}
+
+.view-header {
+  animation: toggle-header-title linear both;
+  animation-timeline: --inline-title-timeline;
+  animation-range: exit;
+}
+
+@keyframes toggle-header-title {
+  0%, 90% {
+    --header-title-hidden: 1;
+  }
+  100% {
+    --header-title-hidden: 0;
+  }
+}
 .view-header-title-container {
-  opacity: 0;
-  transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.2s ease-out, translate 0.2s ease-out;
 }
 
-.view-header-title-container:focus-within {
-  opacity: 1;
-  transition: opacity 0.1s ease-in-out;
+@container style(--header-title-hidden: 1) {
+  .view-header-title-container {
+    opacity: 0;
+    translate: 0 0.5em;
+  }
 }
-
-.workspace-tab-header-container:hover + .workspace-tab-container .view-header-title-container,
-.view-header:hover .view-header-title-container {
-  opacity: 1;
-  transition: opacity 0.1s ease-in-out;
-}
-
-.is-phone .view-header-title-container,
-.minimal-tab-title-visible .view-header-title-container {
-  opacity: 1;
-}
-
 .minimal-tab-title-hidden .view-header-title-container {
   opacity: 0;
 }
@@ -4204,7 +4214,16 @@ body {
 }
 
 /* File browser */
-.hider-file-nav-header:not(.labeled-nav) .nav-files-container {
+.mod-left-split .workspace-tab-header[data-type=file-explorer],
+.workspace-leaf-content[data-type=file-explorer] .nav-header {
+  display: none;
+}
+
+.mod-left-split .workspace-tab-header-container {
+  border-bottom-color: transparent;
+}
+
+body:not(.labeled-nav) .nav-files-container {
   padding-top: var(--size-4-3);
 }
 
@@ -7153,7 +7172,7 @@ settings:
 		title: H1 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1.125em
+		default: 1.6em
 	-
 		id: h1-weight
 		title: H1 font weight
@@ -7221,7 +7240,7 @@ settings:
 		title: H2 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1em
+		default: 1.42em
 	-
 		id: h2-weight
 		title: H2 font weight
@@ -7289,7 +7308,7 @@ settings:
 		title: H3 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1em
+		default: 1.27em
 	-
 		id: h3-weight
 		title: H3 font weight
@@ -7357,7 +7376,7 @@ settings:
 		title: H4 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 0.9em
+		default: 1.125em
 	-
 		id: h4-weight
 		title: H4 font weight
@@ -7425,7 +7444,7 @@ settings:
 		title: H5 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 0.85em
+		default: 1em
 	-
 		id: h5-weight
 		title: H5 font weight
@@ -7493,7 +7512,7 @@ settings:
 		title: H6 font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 0.85em
+		default: 0.89em
 	-
 		id: h6-weight
 		title: H6 font weight
@@ -8504,7 +8523,7 @@ settings:
 		title: Inline title font size
 		description: Accepts any CSS font-size value
 		type: variable-text
-		default: 1.125em
+		default: 1.6em
 	-
 		id: inline-title-weight
 		title: Inline title font weight
