@@ -1,8 +1,8 @@
 // Minimal Theme build script
 //
 // Compiles src/scss/index.scss into theme.css (compressed) and Minimal.css
-// (expanded), then copies theme.css into the test vault defined by
-// OBSIDIAN_PATH in .env.
+// (expanded), then copies theme.css and manifest.json into the test vault
+// defined by OBSIDIAN_PATH in .env.
 //
 // Usage:
 //   node build.js          one-off build
@@ -58,6 +58,7 @@ function build() {
 		try {
 			fs.mkdirSync(path.dirname(dest), { recursive: true });
 			fs.writeFileSync(dest, themeCss);
+			fs.copyFileSync(path.join(__dirname, 'manifest.json'), path.join(path.dirname(dest), 'manifest.json'));
 		} catch (e) {
 			console.warn(`Skipped vault copy: ${e.message}`);
 		}
