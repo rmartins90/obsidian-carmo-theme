@@ -77,3 +77,9 @@ body:not(.is-mobile).labeled-nav.vault-profile-top .workspace-split.mod-primary-
 	--labeled-nav-top-margin: 84px;
 }
 
+/* Resize handles highlight only their 1px divider line, keeping the wider grab area */
+.workspace .workspace-leaf-resize-handle:hover,
+.workspace .workspace-leaf-resize-handle.is-active,
+.workspace .workspace-leaf-resize-handle.mobile-tap {
+	background-color: transparent;
+}
