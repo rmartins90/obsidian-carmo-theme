@@ -20,9 +20,10 @@ body {
 	--base-s: 0%;      /* Base saturation */
 	--base-l: 96%;     /* Base lightness - 100 is white */
 
-	--accent-h: 201;   /* Accent hue */
-	--accent-s: 17%;   /* Accent saturation */
-	--accent-l: 50%;   /* Accent lightness */
+	/* Fixed accent: !important overrides Obsidian's accent colour setting */
+	--accent-h: 209.7 !important;
+	--accent-s: 65.6% !important;
+	--accent-l: 69.2% !important;
 }
 
 .theme-dark,
@@ -49,6 +50,9 @@ body {
 .theme-light,
 .theme-light.minimal-default-light,
 body .excalidraw {
+
+	/* Darker accent for contrast on white */
+	--accent-l: 40% !important;
 
 	--bg1:white;
 
@@ -157,7 +161,6 @@ body .excalidraw {
 .theme-dark.minimal-default-dark,
 .excalidraw.theme--dark {
 
-	--accent-l:60%;
 	--base-l:15%;
 
 	/* Note pane and side panels */
@@ -193,12 +196,7 @@ body .excalidraw {
 		calc(var(--base-l) + 20%)
 		);
 
-	--tx1:
-	hsl(
-		var(--base-h),
-		calc(var(--base-s) - 10%),
-		calc(var(--base-l) + 67%)
-		);
+	--tx1: #ECEBE9;
 
 	--tx2:
 	hsl(
@@ -252,7 +250,7 @@ body .excalidraw {
 
 	--hl2:rgba(255, 177, 80, 0.3);
 
-	--sp1: white;
+	--sp1: var(--bg1); /* Dark text on the light accent */
 
 }
 

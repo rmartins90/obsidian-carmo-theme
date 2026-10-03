@@ -89,7 +89,7 @@
 	--text-italic:                       var(--tx1);
 	--text-muted:                        var(--tx2);
 	--text-normal:                       var(--tx1);
-	--text-on-accent:                    var(--sp1);
+	--text-on-accent:                    var(--sp1) !important;
 	--text-selection:                    var(--hl1);
 
 	--text-formatting:                   var(--tx3);

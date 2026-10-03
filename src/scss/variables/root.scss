@@ -20,6 +20,7 @@ body {
 
 	/* Font sizes */
 	--font-ui-smaller: 11px;
+	--nav-item-size: 14px;
 
 	/* Font weights */
 	--normal-weight: 400;
@@ -27,13 +28,13 @@ body {
 	/* Headings */
 	--inline-title-margin-bottom: 1rem;
 
-	/* Modular scale (ratio 1.125), with h5 at body size */
-	--h1-size: 1.6em;
-	--h2-size: 1.42em;
-	--h3-size: 1.27em;
-	--h4-size: 1.125em;
-	--h5-size: 1em;
-	--h6-size: 0.89em;
+	/* Modular scale (ratio 1.125), with h6 at body size */
+	--h1-size: 1.8em;
+	--h2-size: 1.6em;
+	--h3-size: 1.42em;
+	--h4-size: 1.27em;
+	--h5-size: 1.125em;
+	--h6-size: 1em;
 
 	--h1-weight: 600;
 	--h2-weight: 600;

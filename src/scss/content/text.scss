@@ -53,3 +53,8 @@ body,
 		display: none;
 	}
 }
+
+/* Thinner, crisper light-on-dark text on macOS */
+.theme-dark {
+	-webkit-font-smoothing: antialiased;
+}

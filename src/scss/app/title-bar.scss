@@ -23,6 +23,11 @@ body:not(.minimal-focus-mode) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .
 }
 
 
+/* Hide the reading/editing view toggle */
+.view-action:has(> .lucide-book-open, > .lucide-edit-3) {
+	display: none;
+}
+
 /* Show the header title once the inline title scrolls out of view.
    A view timeline on the inline title toggles --header-title-hidden,
    and a style query transitions the header title in and out. */
@@ -49,6 +54,24 @@ body:not(.minimal-focus-mode) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .
 		opacity: 0;
 		translate: 0 0.5em;
 	}
+}
+
+/* Fade the note content out under the header as it scrolls */
+.workspace-leaf-content[data-type="markdown"] .view-header::before {
+	content: "";
+	position: absolute;
+	inset-inline: 0;
+	top: 100%;
+	height: var(--size-4-8);
+	background: linear-gradient(var(--background-primary), transparent);
+	pointer-events: none;
+	animation: fade-in-header-edge linear both;
+	animation-timeline: --inline-title-timeline;
+	animation-range: exit 0% exit 25%;
+}
+@keyframes fade-in-header-edge {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
 
 .minimal-tab-title-hidden {

@@ -6,6 +6,16 @@
 	display: none;
 }
 
+/* Hide folder chevrons and indentation guides in the file tree */
+.nav-files-container {
+	--nav-indentation-guide-width: 0;
+	--nav-item-padding: var(--size-4-1) var(--size-4-2);
+	--nav-item-parent-padding: var(--nav-item-padding);
+	.collapse-icon {
+		display: none;
+	}
+}
+
 .mod-left-split .workspace-tab-header-container {
 	border-bottom-color: transparent;
 }

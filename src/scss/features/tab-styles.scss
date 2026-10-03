@@ -11,24 +11,39 @@
 	--tab-text-color-focused-active: var(--minimal-tab-text-color-active);
 	--tab-text-color-focused-active-current: var(--minimal-tab-text-color-active);
 }
-.tabs-plain-square .mod-root {
+/* Hide the tab list dropdown */
+.mod-root .workspace-tab-header-tab-list {
+	display: none;
+}
+
+/* Close buttons use the same colours as other icon buttons */
+.mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
+	color: var(--icon-color);
+	&:hover {
+		color: var(--icon-color-hover);
+	}
+}
+/* Square, the default unless another tab style is selected */
+body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root {
 	--tab-curve: 0;
 	--tab-radius: 0;
 	--tab-radius-active: 0;
 
 	.workspace-tab-header-container {
-		padding-left:0;
 		padding-right:0;
+	}
+	/* Keep Obsidian's space for the macOS window controls */
+	.workspace-tabs:not(.mod-top-left-space) .workspace-tab-header-container {
+		padding-left:0;
 	}
 	.workspace-tab-header-container-inner {
 		margin-top: -1px;
-		margin-left: -15px;
 	}
 	.workspace-tab-header {
 		padding: 0;
 	}
 	.workspace-tab-header-inner {
-		padding: 0 8px;
+		padding: 0 8px 0 var(--size-4-3);
 	}
 }
 .tabs-square .mod-root {

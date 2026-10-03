@@ -17,7 +17,6 @@ const SCSS_ENTRY = path.join(SRC, 'scss/index.scss');
 const CSS_DIR = path.join(SRC, 'css');
 const LICENSE = path.join(CSS_DIR, 'license.css');
 const PLUGIN_COMPAT = path.join(CSS_DIR, 'plugin-compatibility.css');
-const STYLE_SETTINGS = path.join(CSS_DIR, 'style-settings.css');
 
 function loadEnv() {
 	try {
@@ -45,10 +44,9 @@ function build() {
 
 	const license = fs.readFileSync(LICENSE, 'utf8');
 	const pluginCompat = fs.readFileSync(PLUGIN_COMPAT, 'utf8');
-	const styleSettings = fs.readFileSync(STYLE_SETTINGS, 'utf8');
 
-	const themeCss = [license, expanded, pluginCompat, styleSettings].join('\n');
-	const minimalCss = [license, expanded, pluginCompat, styleSettings].join('\n');
+	const themeCss = [license, expanded, pluginCompat].join('\n');
+	const minimalCss = [license, expanded, pluginCompat].join('\n');
 
 	fs.writeFileSync(path.join(__dirname, 'theme.css'), themeCss);
 	fs.writeFileSync(path.join(__dirname, 'Minimal.css'), minimalCss);
