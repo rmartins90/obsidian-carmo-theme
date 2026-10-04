@@ -1,10 +1,5 @@
-/* Tooltips */
+/* Tooltips are hidden */
 
 .tooltip {
-	transition: none;
-	animation: none;
-}
-.tooltip.mod-primary,
-.tooltip.mod-secondary {
-	animation:none; 
+	display: none;
 }

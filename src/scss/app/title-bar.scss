@@ -23,8 +23,8 @@ body:not(.minimal-focus-mode) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .
 }
 
 
-/* Hide the reading/editing view toggle */
-.view-action:has(> .lucide-book-open, > .lucide-edit-3) {
+/* Hide the reading/editing view toggle, except on mobile where there is no shortcut */
+body:not(.is-mobile) .view-action:has(> .lucide-book-open, > .lucide-edit-3) {
 	display: none;
 }
 
@@ -56,8 +56,8 @@ body:not(.minimal-focus-mode) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .
 	}
 }
 
-/* Fade the note content out under the header as it scrolls */
-.workspace-leaf-content[data-type="markdown"] .view-header::before {
+/* Fade the note content out under the header as it scrolls (mobile has its own mask) */
+body:not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-header::before {
 	content: "";
 	position: absolute;
 	inset-inline: 0;

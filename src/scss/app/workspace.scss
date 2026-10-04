@@ -6,12 +6,9 @@
 	opacity: 0;
 }
 
-body:not(.is-mobile).hide-help {
-	.workspace-drawer-vault-actions {
-		.clickable-icon:first-child {
-			display: none;
-		}
-	}
+/* Hide the help button next to the vault name */
+body:not(.is-mobile) .workspace-drawer-vault-actions .clickable-icon:has(> .help) {
+	display: none;
 }
 body:not(.is-mobile).hide-settings {
 	.workspace-drawer-vault-actions {

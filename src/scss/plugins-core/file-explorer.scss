@@ -1,18 +1,35 @@
 /* File browser */
 
 
+/* Mobile keeps the explorer actions, its only access to them */
 .mod-left-split .workspace-tab-header[data-type="file-explorer"],
-.workspace-leaf-content[data-type="file-explorer"] .nav-header {
+body:not(.is-mobile) .workspace-leaf-content[data-type="file-explorer"] .nav-header {
 	display: none;
 }
 
-/* Hide folder chevrons and indentation guides in the file tree */
+/* File tree without indentation guides, with folder chevrons on the right,
+   shown only on hover */
 .nav-files-container {
 	--nav-indentation-guide-width: 0;
-	--nav-item-padding: var(--size-4-1) var(--size-4-2);
-	--nav-item-parent-padding: var(--nav-item-padding);
-	.collapse-icon {
-		display: none;
+	--nav-item-padding: 5px var(--size-4-3);
+	--nav-item-parent-padding: 5px var(--size-4-8) 5px var(--size-4-3);
+	.nav-folder-title .collapse-icon {
+		inset-inline-end: var(--size-4-2);
+		margin-inline-start: 0;
+		opacity: 0;
+		transition: opacity 0.15s ease-out;
+	}
+	.nav-folder-title:hover .collapse-icon {
+		opacity: 1;
+	}
+}
+
+/* Touch: taller rows and chevrons always visible, as there is no hover */
+.is-mobile .nav-files-container {
+	--nav-item-padding: var(--size-4-2) var(--size-4-3);
+	--nav-item-parent-padding: var(--size-4-2) var(--size-4-8) var(--size-4-2) var(--size-4-3);
+	.nav-folder-title .collapse-icon {
+		opacity: 1;
 	}
 }
 

@@ -142,6 +142,12 @@
 	--btn-shadow-color: rgba(0, 0, 0, 0.05);
 }
 
+/* Left sidebar in light mode */
+.theme-light .mod-left-split {
+	--background-secondary: #F8F8F9;
+	--tab-container-background: #F8F8F9;
+}
+
 .theme-dark {
 	--divider-color:              #292929;
 	--tab-outline-color:          #292929;

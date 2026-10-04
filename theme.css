@@ -162,15 +162,13 @@ body {
 .theme-light,
 .theme-light.minimal-default-light,
 body .excalidraw {
-  /* Darker accent for contrast on white */
-  --accent-l: 40% !important;
-  --bg1:white;
-  --bg2:
-  hsl(
-  	var(--base-h),
-  	var(--base-s),
-  	var(--base-l)
-  	);
+  /* Light-mode accent, #2958A4 */
+  --accent-h: 217.1 !important;
+  --accent-s: 60% !important;
+  --accent-l: 40.2% !important;
+  /* Note pane and side panels */
+  --bg1: #FFFFFF;
+  --bg2: #FBFBFB;
   --bg3:
   hsla(
   	var(--base-h),
@@ -498,6 +496,12 @@ body .excalidraw {
   /* Shadows */
   --shadow-color: rgba(0, 0, 0, 0.1);
   --btn-shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Left sidebar in light mode */
+.theme-light .mod-left-split {
+  --background-secondary: #F8F8F9;
+  --tab-container-background: #F8F8F9;
 }
 
 .theme-dark {
@@ -923,43 +927,9 @@ body.ribbon-vertical-expand:not(.is-mobile) .workspace-ribbon.mod-primary:hover 
   padding: 8px 6px;
 }
 
-/* Status bar */
-.minimal-status-off .status-bar {
-  --status-bar-position: static;
-  --status-bar-radius: 0;
-  --status-bar-border-width: 1px 0 0 0;
-  --status-bar-background: var(--background-secondary);
-  --status-bar-border-color: var(--ui1);
-}
-
-body:not(.minimal-status-off) .status-bar {
-  background-color: var(--background-primary);
-  --status-bar-border-width: 0;
-}
-
+/* Status bar is hidden */
 .status-bar {
-  transition: color 200ms linear;
-  color: var(--text-faint);
-  font-size: var(--font-adaptive-smallest);
-}
-.status-bar .sync-status-icon.mod-working,
-.status-bar .sync-status-icon.mod-success {
-  color: var(--text-faint);
-}
-.status-bar:hover .sync-status-icon.mod-working, .status-bar:hover .sync-status-icon.mod-success, .status-bar:hover {
-  color: var(--text-muted);
-  transition: color 200ms linear;
-}
-.status-bar .plugin-sync:hover .sync-status-icon.mod-working,
-.status-bar .plugin-sync:hover .sync-status-icon.mod-success {
-  color: var(--text-normal);
-}
-.status-bar .status-bar-item {
-  cursor: var(--cursor) !important;
-}
-.status-bar .status-bar-item.plugin-editor-status:hover, .status-bar .status-bar-item.plugin-sync:hover, .status-bar .status-bar-item.cMenu-statusbar-button:hover, .status-bar .status-bar-item.mod-clickable:hover {
-  text-align: center;
-  background-color: var(--background-modifier-hover) !important;
+  display: none;
 }
 
 .tab-stack-top-flipped {
@@ -1012,8 +982,8 @@ body:not(.minimal-focus-mode) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .
   transition: opacity 0.25s ease-in-out;
 }
 
-/* Hide the reading/editing view toggle */
-.view-action:has(> .lucide-book-open, > .lucide-edit-3) {
+/* Hide the reading/editing view toggle, except on mobile where there is no shortcut */
+body:not(.is-mobile) .view-action:has(> .lucide-book-open, > .lucide-edit-3) {
   display: none;
 }
 
@@ -1052,8 +1022,8 @@ body:not(.minimal-focus-mode) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .
     translate: 0 0.5em;
   }
 }
-/* Fade the note content out under the header as it scrolls */
-.workspace-leaf-content[data-type=markdown] .view-header::before {
+/* Fade the note content out under the header as it scrolls (mobile has its own mask) */
+body:not(.is-mobile) .workspace-leaf-content[data-type=markdown] .view-header::before {
   content: "";
   position: absolute;
   inset-inline: 0;
@@ -1135,7 +1105,8 @@ body.is-focused {
   opacity: 0;
 }
 
-body:not(.is-mobile).hide-help .workspace-drawer-vault-actions .clickable-icon:first-child {
+/* Hide the help button next to the vault name */
+body:not(.is-mobile) .workspace-drawer-vault-actions .clickable-icon:has(> .help) {
   display: none;
 }
 
@@ -1338,15 +1309,9 @@ body {
   background-color: var(--color-red);
 }
 
-/* Tooltips */
+/* Tooltips are hidden */
 .tooltip {
-  transition: none;
-  animation: none;
-}
-
-.tooltip.mod-primary,
-.tooltip.mod-secondary {
-  animation: none;
+  display: none;
 }
 
 /* Content */
@@ -1869,8 +1834,8 @@ body,
   display: none;
 }
 
-/* Thinner, crisper light-on-dark text on macOS */
-.theme-dark {
+/* Thinner, crisper text on macOS */
+body {
   -webkit-font-smoothing: antialiased;
 }
 
@@ -4293,19 +4258,36 @@ body {
 }
 
 /* File browser */
+/* Mobile keeps the explorer actions, its only access to them */
 .mod-left-split .workspace-tab-header[data-type=file-explorer],
-.workspace-leaf-content[data-type=file-explorer] .nav-header {
+body:not(.is-mobile) .workspace-leaf-content[data-type=file-explorer] .nav-header {
   display: none;
 }
 
-/* Hide folder chevrons and indentation guides in the file tree */
+/* File tree without indentation guides, with folder chevrons on the right,
+   shown only on hover */
 .nav-files-container {
   --nav-indentation-guide-width: 0;
-  --nav-item-padding: var(--size-4-1) var(--size-4-2);
-  --nav-item-parent-padding: var(--nav-item-padding);
+  --nav-item-padding: 5px var(--size-4-3);
+  --nav-item-parent-padding: 5px var(--size-4-8) 5px var(--size-4-3);
 }
-.nav-files-container .collapse-icon {
-  display: none;
+.nav-files-container .nav-folder-title .collapse-icon {
+  inset-inline-end: var(--size-4-2);
+  margin-inline-start: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+}
+.nav-files-container .nav-folder-title:hover .collapse-icon {
+  opacity: 1;
+}
+
+/* Touch: taller rows and chevrons always visible, as there is no hover */
+.is-mobile .nav-files-container {
+  --nav-item-padding: var(--size-4-2) var(--size-4-3);
+  --nav-item-parent-padding: var(--size-4-2) var(--size-4-8) var(--size-4-2) var(--size-4-3);
+}
+.is-mobile .nav-files-container .nav-folder-title .collapse-icon {
+  opacity: 1;
 }
 
 .mod-left-split .workspace-tab-header-container {

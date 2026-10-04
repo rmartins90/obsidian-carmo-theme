@@ -51,17 +51,14 @@ body {
 .theme-light.minimal-default-light,
 body .excalidraw {
 
-	/* Darker accent for contrast on white */
-	--accent-l: 40% !important;
+	/* Light-mode accent, #2958A4 */
+	--accent-h: 217.1 !important;
+	--accent-s: 60% !important;
+	--accent-l: 40.2% !important;
 
-	--bg1:white;
-
-	--bg2:
-	hsl(
-		var(--base-h),
-		var(--base-s),
-		var(--base-l)
-		);
+	/* Note pane and side panels */
+	--bg1: #FFFFFF;
+	--bg2: #FBFBFB;
 
 	--bg3:
 	hsla(
