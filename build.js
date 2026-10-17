@@ -1,8 +1,8 @@
 // Minimal Theme build script
 //
 // Compiles src/scss/index.scss into theme.css (compressed) and Minimal.css
-// (expanded), then copies theme.css and manifest.json into the test vaults
-// defined by OBSIDIAN_PATH in .env (comma-separated, relative to the home folder).
+// (expanded), then copies theme.css into the test vault defined by
+// OBSIDIAN_PATH in .env.
 //
 // Usage:
 //   node build.js          one-off build
@@ -51,15 +51,13 @@ function build() {
 	fs.writeFileSync(path.join(__dirname, 'theme.css'), themeCss);
 	fs.writeFileSync(path.join(__dirname, 'Minimal.css'), minimalCss);
 
-	const vaultPaths = (process.env.OBSIDIAN_PATH || '').split(',').map((p) => p.trim()).filter(Boolean);
-	for (const vaultPath of process.env.HOME ? vaultPaths : []) {
-		const dest = path.join(process.env.HOME, vaultPath);
+	if (process.env.OBSIDIAN_PATH && process.env.HOME) {
+		const dest = path.join(process.env.HOME, process.env.OBSIDIAN_PATH, 'theme.css');
 		try {
-			fs.mkdirSync(dest, { recursive: true });
-			fs.writeFileSync(path.join(dest, 'theme.css'), themeCss);
-			fs.copyFileSync(path.join(__dirname, 'manifest.json'), path.join(dest, 'manifest.json'));
+			fs.mkdirSync(path.dirname(dest), { recursive: true });
+			fs.writeFileSync(dest, themeCss);
 		} catch (e) {
-			console.warn(`Skipped vault copy to ${dest}: ${e.message}`);
+			console.warn(`Skipped vault copy: ${e.message}`);
 		}
 	}
 

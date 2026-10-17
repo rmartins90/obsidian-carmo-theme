@@ -23,8 +23,8 @@
 		color: var(--icon-color-hover);
 	}
 }
-/* Square, the default unless another tab style is selected */
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root {
+/* Square */
+.tabs-plain-square .mod-root {
 	--tab-curve: 0;
 	--tab-radius: 0;
 	--tab-radius-active: 0;
@@ -85,8 +85,8 @@ body:not(.sidebar-tabs-underline):not(.sidebar-tabs-index):not(.sidebar-tabs-squ
 	}
 }
 
-/* Safari/Firefox style */
-.tabs-modern {
+/* Safari/Firefox style, the default unless another tab style is selected */
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) {
 
 	&.colorful-frame {
 		.mod-root .mod-top.workspace-tabs:not(.mod-stacked) {
@@ -172,6 +172,11 @@ body:not(.sidebar-tabs-underline):not(.sidebar-tabs-index):not(.sidebar-tabs-squ
 
 
 /* Sidebar tabs ------------ */
+
+/* No line below the sidebar tabs */
+.mod-sidedock .workspace-tab-header-container {
+	border-bottom-color: transparent;
+}
 
 .tab-names-on .workspace-split:not(.mod-root) .workspace-tab-header-container-inner {
 	--sidebar-tab-text-display: static;

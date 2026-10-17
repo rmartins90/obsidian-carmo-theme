@@ -3797,28 +3797,28 @@ body:not(.sidebar-color) .mod-secondary-split :not(.mod-top) .workspace-tab-head
   color: var(--icon-color-hover);
 }
 
-/* Square, the default unless another tab style is selected */
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root {
+/* Square */
+.tabs-plain-square .mod-root {
   --tab-curve: 0;
   --tab-radius: 0;
   --tab-radius-active: 0;
 }
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root .workspace-tab-header-container {
+.tabs-plain-square .mod-root .workspace-tab-header-container {
   padding-right: 0;
 }
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root {
+.tabs-plain-square .mod-root {
   /* Keep Obsidian's space for the macOS window controls */
 }
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-top-left-space) .workspace-tab-header-container {
+.tabs-plain-square .mod-root .workspace-tabs:not(.mod-top-left-space) .workspace-tab-header-container {
   padding-left: 0;
 }
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root .workspace-tab-header-container-inner {
+.tabs-plain-square .mod-root .workspace-tab-header-container-inner {
   margin-top: -1px;
 }
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root .workspace-tab-header {
+.tabs-plain-square .mod-root .workspace-tab-header {
   padding: 0;
 }
-body:not(.tabs-default):not(.tabs-square):not(.tabs-modern):not(.tabs-underline) .mod-root .workspace-tab-header-inner {
+.tabs-plain-square .mod-root .workspace-tab-header-inner {
   padding: 0 8px 0 var(--size-4-3);
 }
 
@@ -3859,41 +3859,41 @@ body:not(.sidebar-tabs-underline):not(.sidebar-tabs-index):not(.sidebar-tabs-squ
   --tab-outline-width: 0;
 }
 
-/* Safari/Firefox style */
-.tabs-modern.colorful-frame .mod-root .mod-top.workspace-tabs:not(.mod-stacked) {
+/* Safari/Firefox style, the default unless another tab style is selected */
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline).colorful-frame .mod-root .mod-top.workspace-tabs:not(.mod-stacked) {
   --tab-background: var(--frame-outline-color);
   --tab-outline-width: 1px;
 }
-.tabs-modern.colorful-frame .mod-root .mod-top.workspace-tabs:not(.mod-stacked) .workspace-tab-header:hover .workspace-tab-header-inner-close-button,
-.tabs-modern.colorful-frame .mod-root .mod-top.workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-close-button {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline).colorful-frame .mod-root .mod-top.workspace-tabs:not(.mod-stacked) .workspace-tab-header:hover .workspace-tab-header-inner-close-button,
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline).colorful-frame .mod-root .mod-top.workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-close-button {
   color: var(--minimal-tab-text-color-active);
 }
-.tabs-modern.minimal-focus-mode .mod-root .workspace-tab-header-container:hover {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline).minimal-focus-mode .mod-root .workspace-tab-header-container:hover {
   --tab-outline-width: 0px;
 }
-.tabs-modern .mod-root {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root {
   --tab-container-background: var(--background-primary);
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) {
   --tab-background: var(--background-modifier-hover);
   --tab-height: calc(var(--header-height) - 14px);
   --tab-outline-width: 0px;
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header::before,
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header::after,
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner::after {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header::before,
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header::after,
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner::after {
   display: none;
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-container-inner {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-container-inner {
   align-items: center;
   margin: 0;
   padding: 2px var(--size-4-2) 0 var(--size-4-1);
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
   text-overflow: ellipsis;
   -webkit-mask-image: none;
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
   background: transparent;
   border-radius: 5px;
   border: none;
@@ -3902,29 +3902,34 @@ body:not(.sidebar-tabs-underline):not(.sidebar-tabs-index):not(.sidebar-tabs-squ
   margin-left: var(--size-4-1);
   padding: 0;
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
   color: var(--tab-text-color-active);
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:hover, .tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:hover, body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active {
   opacity: 1;
   background-color: var(--tab-background);
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-new-tab {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-new-tab {
   margin-inline-end: 0;
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
   padding: 0 var(--size-4-1) 0 var(--size-4-2);
   border: 1px solid transparent;
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
   background-color: transparent;
 }
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(:hover):not(.mod-active) .workspace-tab-header-inner,
-.tabs-modern .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active:not(.mod-active) .workspace-tab-header-inner {
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(:hover):not(.mod-active) .workspace-tab-header-inner,
+body:not(.tabs-default):not(.tabs-square):not(.tabs-plain-square):not(.tabs-underline) .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active:not(.mod-active) .workspace-tab-header-inner {
   border: 1px solid var(--tab-outline-color);
 }
 
 /* Sidebar tabs ------------ */
+/* No line below the sidebar tabs */
+.mod-sidedock .workspace-tab-header-container {
+  border-bottom-color: transparent;
+}
+
 .tab-names-on .workspace-split:not(.mod-root) .workspace-tab-header-container-inner {
   --sidebar-tab-text-display: static;
 }
@@ -4288,10 +4293,6 @@ body:not(.is-mobile) .workspace-leaf-content[data-type=file-explorer] .nav-heade
 }
 .is-mobile .nav-files-container .nav-folder-title .collapse-icon {
   opacity: 1;
-}
-
-.mod-left-split .workspace-tab-header-container {
-  border-bottom-color: transparent;
 }
 
 body:not(.labeled-nav) .nav-files-container {
